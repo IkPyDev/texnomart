@@ -106,8 +106,6 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
     print('delete');
     final ls = state.basketList!;
     try {
-      ItemHiveManager.getBaskets().toSet().remove(ls[event.index]);
-      ls.removeAt(event.index);
       ItemHiveManager.deleteBasketData(ls[event.index].productId);
     } catch (e) {
       print("basket ls: $ls");

@@ -1,16 +1,17 @@
+import 'package:avatar_glow/avatar_glow.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:texnomart/presentation/bloc/basket/basket_bloc.dart';
-import 'package:texnomart/presentation/bloc/category_menu/category_menu_bloc.dart';
-import 'package:texnomart/ui/category_menu/category_menu.dart';
-import 'package:texnomart/ui/home/home_screens.dart';
-import 'package:texnomart/ui/orders/orders.dart';
-import 'package:texnomart/ui/profil/profil.dart';
-import 'package:texnomart/ui/saves/saves.dart';
+import '../../presentation/bloc/basket/basket_bloc.dart';
+import '../../presentation/bloc/category_menu/category_menu_bloc.dart';
+import '../category_menu/category_menu.dart';
+import '../home/home_screens.dart';
+import '../orders/orders.dart';
+import '../profil/profil.dart';
+import '../saves/saves.dart';
 
 import '../../presentation/bloc/home/home_bloc.dart';
 import '../../presentation/bloc/main/main_bloc.dart';
-import '../../presentation/bloc/profil/profil_bloc.dart';
 
 class MainScreens extends StatefulWidget {
   const MainScreens({super.key});
@@ -21,15 +22,15 @@ class MainScreens extends StatefulWidget {
 
 class _MainScreensState extends State<MainScreens> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocConsumer<MainBloc, MainState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        // context.read<MainBloc>().add(LoadAllBasketData());
+        // setState(() {});
+      },
       builder: (context, state) {
+        context.read<MainBloc>().add(LoadAllBasketData());
+
         return Scaffold(
           backgroundColor: Colors.white,
           body: IndexedStack(
@@ -49,10 +50,7 @@ class _MainScreensState extends State<MainScreens> {
                 child: Saves(),
               ),
               const Orders(),
-              BlocProvider(
-                create: (context) => ProfilBloc()..add(GetLoadProfilEvent()),
-                child: Profil(),
-              ),
+              Profil(),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -68,25 +66,77 @@ class _MainScreensState extends State<MainScreens> {
             unselectedItemColor: Colors.grey,
             selectedLabelStyle: const TextStyle(fontSize: 12),
             unselectedLabelStyle: const TextStyle(fontSize: 12),
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
+                icon: AvatarGlow(
+                  glowColor: Theme.of(context).primaryColor,
+                  glowShape: BoxShape.circle,
+                  animate: true,
+                  repeat: false,
+                  curve: Curves.fastOutSlowIn,
+                  child: const Icon(Icons.home_outlined),
+                ),
                 label: "Bosh sahifa",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.manage_search_outlined),
+                icon: AvatarGlow(
+                  glowColor: Theme.of(context).primaryColor,
+                  glowShape: BoxShape.circle,
+                  animate: true,
+                  repeat: false,
+                  curve: Curves.fastOutSlowIn,
+                  child: const Icon(Icons.manage_search_outlined),
+                ),
                 label: "Katalog",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined),
+                icon:  AvatarGlow(
+                      glowColor: Theme.of(context).primaryColor,
+                      glowShape: BoxShape.circle,
+                      animate: true,
+                      repeat: false,
+                      curve: Curves.fastOutSlowIn,
+                      child: badges.Badge(
+                        showBadge: state.notificationCount != 0,
+                        badgeStyle: badges.BadgeStyle(
+                          badgeColor: Theme.of(context).primaryColor,
+                        ),
+                        badgeContent: Text("${state.notificationCount}",
+                            style: const TextStyle(fontSize: 10)),
+                        child: const Icon(Icons.shopping_cart_rounded),
+                      ),
+                    ),
                 label: "Savatcha",
+
+
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.add_business),
+                icon: AvatarGlow(
+                  glowColor: Theme.of(context).primaryColor,
+                  glowShape: BoxShape.circle,
+                  animate: true,
+                  repeat: false,
+                  curve: Curves.fastOutSlowIn,
+                  child: AvatarGlow(
+                    glowColor: Theme.of(context).primaryColor,
+                    glowShape: BoxShape.circle,
+                    animate: true,
+                    repeat: false,
+                    curve: Curves.fastOutSlowIn,
+                    child: const Icon(Icons.add_business),
+                  ),
+                ),
                 label: "Buyurtmalar",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
+                icon: AvatarGlow(
+                  glowColor: Theme.of(context).primaryColor,
+                  glowShape: BoxShape.circle,
+                  animate: true,
+                  repeat: false,
+                  curve: Curves.fastOutSlowIn,
+                  child: const Icon(Icons.person_outline),
+                ),
                 label: "Profil",
               ),
             ],

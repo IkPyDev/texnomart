@@ -12,6 +12,7 @@ import 'package:texnomart/ui/category_menu/category_menu.dart';
 import 'package:texnomart/ui/detail/detail_screens.dart';
 import 'package:texnomart/ui/home/home_screens.dart';
 import 'package:texnomart/ui/main/main_screens.dart';
+import 'package:texnomart/ui/profil/profil_likes/like_screens.dart';
 import 'package:texnomart/ui/saves/saves.dart';
 
 import '../presentation/bloc/home/home_bloc.dart';
@@ -24,14 +25,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Color(0xfffdc202)));
+        const SystemUiOverlayStyle(statusBarColor: Color(0xfffdc202)));
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => BasketBloc(),
+          create: (context) => BasketBloc()..add(LoadBasketData()),
         ),
         BlocProvider(
           create: (context) => ProfilBloc(),
+        ),
+        BlocProvider(
+          create: (context) => MainBloc()..add(LoadAllBasketData()),
         ),
       ],
       child: MaterialApp(
@@ -84,11 +88,12 @@ Route ganerate(RouteSettings set) {
         ),
       );
     case '/detail':
+      final args =set.arguments as String;
       return MaterialPageRoute(
         builder: (c) => BlocProvider(
           create: (c) =>
               DetailBloc()..add(DetailIdEvent(id: set.arguments as String)),
-          child: const DetailScreens(),
+          child:  DetailScreens(args: args),
         ),
       );
     case '/category':
@@ -111,6 +116,12 @@ Route ganerate(RouteSettings set) {
           builder: (c) => BlocProvider(
                 create: (c) => BasketBloc(),
                 child: const Saves(),
+              ));
+    case '/likes':
+      return MaterialPageRoute(
+          builder: (c) => BlocProvider(
+                create: (context) => ProfilBloc()..add(GetLoadProfilEvent()),
+                child: LikeScreens(),
               ));
     default:
       return MaterialPageRoute(builder: (c) => const Placeholder());

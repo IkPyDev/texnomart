@@ -127,13 +127,14 @@ class _ItemHomeState extends State<ItemHome> {
           var item = ItemHive(
               id: widget.items.id.toString(),
               name: widget.items.name ?? "",
-              price: widget.items.finishPrice.toString() ?? "",
+              price: widget.items.salePrice.toString() ?? "",
               img: widget.items.image ?? ""
           );
           ItemHiveManager.addItem(item);
+          context.read<ProfilBloc>().add(GetLoadProfilEvent());
+
           setState(() {
             isLike = !isLike;
-            context.read<ProfilBloc>().add(GetLoadProfilEvent());
           });
         },
         child: SvgPicture.asset(
@@ -147,11 +148,11 @@ class _ItemHomeState extends State<ItemHome> {
     return InkWell(
         onTap: () {
           ItemHiveManager.deleteItemById(widget.items.id.toString());
-print("dislike bosildi ");
+          context.read<ProfilBloc>().add(GetLoadProfilEvent());
+          print("dislike bosildi ");
           setState(() {
 
-          isLike = !isLike;
-          context.read<ProfilBloc>().add(GetLoadProfilEvent());
+            isLike = !isLike;
 
           });
         },

@@ -18,6 +18,7 @@ class HomeScreens extends StatefulWidget {
 class _HomeScreensState extends State<HomeScreens> {
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         body: BlocConsumer<HomeBloc, HomeState>(
@@ -181,7 +182,7 @@ Widget itemsHome(List<SpPrItems> items,
         return ItemHome(
           items: items[i],
           click: (s) {
-            print(s);
+            // print(s);
             click(s);
           },
         );

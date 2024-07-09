@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
@@ -16,7 +17,6 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
-  late var data;
 
 
   @override
@@ -26,47 +26,121 @@ class _ProfilState extends State<Profil> {
 
   @override
   Widget build(BuildContext context) {
-    data = ItemHiveManager.getLikes();
     return SafeArea(
       child: Scaffold(
 
-        body: BlocBuilder<ProfilBloc, ProfilState>(
-          builder: (context, state) {
-            return switch(state.status){
+        body: getAllItems(),
 
-              Status.initial => Center(child: Text("no data"),),
-              Status.loading => getLoading(),
-              Status.success => getAll(state.items ?? []),
-              Status.fail =>Center(child: Text("no data"),),
-            };
-
-          },
-        ),
       ),
     );
   }
-  Widget getAll(
-      List<ItemHive> data
-      ){
-    return GridView.builder(
-        scrollDirection: Axis.vertical,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // number of items in each row
-            mainAxisSpacing: 8.0, // spacing between rows
-            crossAxisSpacing: 12.0,
-            childAspectRatio: 1 / 2 // spacing between columns
-        ),
-        padding: EdgeInsets.all(12),
-        itemCount: data.length,
-        itemBuilder: (c, i) {
-          var item = data[i];
-          return ItemProfil(() {
 
-          }, data: item, click: (id) {
-            Navigator.pushNamed(context, '/detail', arguments: id);
-          });
-        });
+  Widget getItem(IconData icons,String title,){
+
+    return Container(
+      margin: const EdgeInsets.all(12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(icons,
+            size: 28,
+          ),
+          // fit: BoxFit.none,
+          // fit: BoxFit.none,
+          SizedBox(width: 4),
+          Expanded(
+            child: Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall
+                  ?.copyWith(fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(width: 4),
+          const Icon(
+            Icons.arrow_forward_ios,
+            size: 14,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    );
+  }
+  Widget getAllItems() {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+
+        children: [
+          Container(
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.circular(12)
+            ),
+            alignment: Alignment.topCenter,
+            child: Text("Kirish",style: TextStyle(color: Colors.black,fontSize: 15),),
+          ),
+
+          Container(
+            padding: EdgeInsets.all(5),
+            margin: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15)
+            ),
+
+            child: Column(
+              children: [
+
+                getItem(Icons.percent_rounded, "Aksiya"),
+                GestureDetector(
+                    onTap: (){
+
+                      Navigator.of(context).pushNamed('/likes',);
+                    },
+                    child: getItem(Icons.favorite_outline, "Sevimlilar")),
+                getItem(Icons.compare_arrows, "Taqoslash"),
+                getItem(Icons.language, "Ilova tili")
+
+              ],
+            ),
+          ),
+          SizedBox(height: 10,),
+          Container(
+            margin: EdgeInsets.all(12),
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15)
+            ),
+
+            child: Column(
+              children: [
+                getItem(Icons.shopping_cart_outlined, "Bizning dokonlarimiz"),
+                getItem(Icons.call_outlined, "Qollab quvatlash markazi"),
+                getItem(Icons.info_outline, "Malumot"),
+                getItem(Icons.phone_android, "Ilova haqida"),
+                getItem(Icons.notifications_none, "Bildirishnoma sozlamalari "),
+
+              ],
+            ),
+          )
+          ,
+          Padding(
+
+            padding: const EdgeInsets.only(left: 25),
+            child: Text("Versiya 1.0.0",style: TextStyle(color: Colors.grey),),
+          )
+
+        ],
+      ),
+    );
   }
 }
+
+
 
 

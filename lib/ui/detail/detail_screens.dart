@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:texnomart/date/source/local/hive/basket_hive.dart';
+import 'package:texnomart/presentation/bloc/main/main_bloc.dart';
 import 'package:texnomart/utils/widget.dart';
 
 import '../../constats/const.dart';
@@ -14,16 +16,19 @@ import '../../utils/status.dart';
 import 'detail_sliders.dart';
 
 class DetailScreens extends StatefulWidget {
-  const DetailScreens({super.key});
+
+   String args;
+   DetailScreens({required this.args,super.key,});
+
 
   @override
   State<DetailScreens> createState() => _DetailScreensState();
 }
 
 class _DetailScreensState extends State<DetailScreens> {
+  bool isTap =false;
+
   late bool isLike = false;
-  late String args;
-  late bool isFavorite;
 
   @override
   void initState() {
@@ -34,11 +39,32 @@ class _DetailScreensState extends State<DetailScreens> {
 
   @override
   Widget build(BuildContext context) {
-    // isLike = !ItemHiveManager.isItemLike(args);
+    return BlocBuilder<DetailBloc, DetailState>(
+  builder: (context, state) {
+    return switch (state.status) {
+      Status.loading => Scaffold(appBar: AppBar(backgroundColor: Theme.of(context).primaryColor,),body: getLoading()),
+      Status.success => getScafold(state.detail!),
+      Status.fail => Center(
+        child: Text(state.errorMessage.toString()),
+      ),
+      Status.initial => Center(),
+      null => Center(),
+    };
+
+
+
+  },
+);
+  }
+
+  Widget getScafold(GetDetail data){
+    isLike = !ItemHiveManager.isItemLike(widget.args.toString());
+    isTap = false;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffffba08),
-        actions: [isLike ? isLikedItem() : isDisLikedItem()],
+        actions: [isLike ? isLikedItem( data.id.toString(),data.name.toString(),data.salePrice.toString(),data.largeImages?[0].toString() ?? "") : isDisLikedItem()],
         leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pop();
@@ -49,22 +75,7 @@ class _DetailScreensState extends State<DetailScreens> {
               color: Colors.black,
             )),
       ),
-      body: BlocConsumer<DetailBloc, DetailState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return switch (state.status) {
-            Status.loading => getLoading(),
-            Status.success => getData(state.detail!),
-            Status.fail => Center(
-                child: Text(state.errorMessage.toString()),
-              ),
-            Status.initial => Center(),
-            null => Center(),
-          };
-        },
-      ),
+      body: getData(data),
     );
   }
 
@@ -308,11 +319,16 @@ class _DetailScreensState extends State<DetailScreens> {
     );
   }
 
-  Widget isLikedItem() {
+  Widget isLikedItem(String id,String name,String price,String img) {
+
     return InkWell(
+
         onTap: () {
+          if(!isTap){
+
+          }
           print("like bosildi ");
-          var item = ItemHive(id: args, name: "", price: "", img: "");
+          var item = ItemHive(id: id, name:name, price:price, img: img);
           ItemHiveManager.addItem(item);
           setState(() {
             isLike = !isLike;
@@ -326,9 +342,13 @@ class _DetailScreensState extends State<DetailScreens> {
   }
 
   Widget isDisLikedItem() {
+
     return InkWell(
         onTap: () {
-          ItemHiveManager.deleteItemById(args);
+          if(!isTap){
+
+          }
+          ItemHiveManager.deleteItemById(widget.args);
           print("dislike bosildi ");
           setState(() {
             isLike = !isLike;
@@ -348,6 +368,7 @@ class _DetailScreensState extends State<DetailScreens> {
               .read<DetailBloc>()
               .add(DetailAddFavoriteEvent(basket: basket));
           print("Event Detailda bosildi  ");
+          context.read<MainBloc>().add(LoadAllBasketData());
           context.read<BasketBloc>().add(LoadBasketData());
 
           // print("isFavorite bosildi ");
@@ -375,7 +396,10 @@ class _DetailScreensState extends State<DetailScreens> {
           context.read<DetailBloc>().add(DetailDeleteId(id: id));
           // print("deIsFavorite bosildi ");
           print("Event Detailda bosildi  ");
+          context.read<MainBloc>().add(LoadAllBasketData());
           context.read<BasketBloc>().add(LoadBasketData());
+
+
 
         },
         child: Container(

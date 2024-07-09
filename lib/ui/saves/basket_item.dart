@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/date/source/local/hive/basket_hive.dart';
 
 import '../../presentation/bloc/basket/basket_bloc.dart';
+import '../../presentation/bloc/main/main_bloc.dart';
 
 class BasketItem extends StatefulWidget {
   final BasketHive basketData;
@@ -158,7 +159,9 @@ class _BasketItemState extends State<BasketItem> {
                         IconButton(
                           onPressed: () {
                             context.read<BasketBloc>().add(RemoveProduct(index: widget.index));
-                            setState(() {});
+                            context.read<BasketBloc>().add(LoadBasketData());
+                            // setState(() {});
+                            context.read<MainBloc>().add(LoadAllBasketData());
                           },
                           icon: const Icon(
                             Icons.delete_outline,

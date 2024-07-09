@@ -16,10 +16,10 @@ class Saves extends StatefulWidget {
 class _SavesState extends State<Saves> {
   @override
   Widget build(BuildContext context) {
+    context.read<BasketBloc>().add(LoadBasketData());
     return BlocConsumer<BasketBloc, BasketState>(
       listener: (context, state) {},
       builder: (context, state) {
-        print('Evetlar ozgarish sodir boldi');
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(

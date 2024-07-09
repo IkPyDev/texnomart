@@ -7,3 +7,5 @@ final class ChangeBottomNavigation extends MainEvent {
 
   ChangeBottomNavigation({required this.chosenIndex});
 }
+
+final class LoadAllBasketData extends MainEvent {}
