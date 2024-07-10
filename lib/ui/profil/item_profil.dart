@@ -100,7 +100,7 @@ class _ItemProfilState extends State<ItemProfil> {
                 },
               ),
             ),
-            Text("${widget.data.price} Som",
+            Text("${widget.data.price}",
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,

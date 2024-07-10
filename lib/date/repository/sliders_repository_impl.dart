@@ -9,6 +9,7 @@ import 'package:texnomart/date/source/remote/service/api_service.dart';
 
 import '../../di/di.dart';
 import '../../domain/repository.dart';
+import '../source/remote/response/childs_response/childs_respose.dart';
 
 
 class RepositoryImpl extends TexnoRepository {
@@ -91,5 +92,16 @@ class RepositoryImpl extends TexnoRepository {
       rethrow;
     }
     throw UnimplementedError();
+  }
+
+  @override
+  Future<ChildsRespose> getPopMenu() async {
+    try{
+      final respone = await apiService.getPopMenu();
+      return respone;
+    }on DioException{
+      rethrow;
+    }
+
   }
 }

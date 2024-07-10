@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/presentation/bloc/detail/detail_bloc.dart';
 import 'package:texnomart/presentation/bloc/home/home_bloc.dart';
+import 'package:texnomart/ui/detail/detail_screens.dart';
 import 'package:texnomart/ui/home/carusel.dart';
 import 'package:texnomart/ui/home/widget_category.dart';
-import 'package:texnomart/utils/widget.dart';
 
 import '../../date/source/remote/response/special_product_response/special_product_response.dart';
+import '../../presentation/bloc/category/category_bloc.dart';
+import '../../utils/widget.dart';
+import '../category/category_screens.dart';
 import 'item_home.dart';
 
 class HomeScreens extends StatefulWidget {
@@ -18,7 +22,6 @@ class HomeScreens extends StatefulWidget {
 class _HomeScreensState extends State<HomeScreens> {
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         body: BlocConsumer<HomeBloc, HomeState>(
@@ -116,8 +119,15 @@ class _HomeScreensState extends State<HomeScreens> {
                           CategoryWidget(
                               category: state.categoryResponse!,
                               click: (data) {
-                                Navigator.pushNamed(context, '/category',
-                                    arguments: data);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BlocProvider(
+                                          create: (c) => CategoryBloc()..add(GetSlugCategoryEvent(slug: data.slug)),
+                                          child: CategoryScreen(
+                                            data: data,
+                                          ),
+                                        )));
                                 print(
                                     "Categori bosildi ${data.slug + data.title}");
                               }),
@@ -141,12 +151,19 @@ class _HomeScreensState extends State<HomeScreens> {
                             ],
                           ),
                           SizedBox(
-                              height: 320,
-                              child: itemsHome(state.specialProductResponse!,
+                              height: 350,
+                              child: itemsHome(state.specialProductResponse ?? [],
                                   click: (s) {
                                 // print("id bosildi $s");
-                                Navigator.pushNamed(context, '/detail',
-                                    arguments: s);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BlocProvider(
+                                              create: (c) => DetailBloc()..add(DetailIdEvent(id: s)),
+                                              child: DetailScreens(
+                                                args: s,
+                                              ),
+                                            )));
                                 // context.read<DetailBloc>().add(DetailIdEvent(id: s));
                               }))
                         ],
@@ -174,12 +191,19 @@ class _HomeScreensState extends State<HomeScreens> {
 
 Widget itemsHome(List<SpPrItems> items,
     {required void Function(String id) click}) {
+  // print(items);
   // void Function(String) clickID;
+  if (items.isEmpty) {
+    return const Center(
+      child: Text("Empty"),
+    );
+  }
   return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemBuilder: (_, i) {
-        // print(items);
+        print(items[i]);
         return ItemHome(
+
           items: items[i],
           click: (s) {
             // print(s);

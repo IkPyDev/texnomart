@@ -71,7 +71,7 @@ Widget getData(List<GetCatalogMenu> data) {
            itemBuilder: (c,i){
          return CategoryMenuItem(data: data[i]);
        }, separatorBuilder: (_,__){
-         return const Divider(height: 1,color: Colors.grey,);
+         return const SizedBox(height: 1,);
        }, itemCount: data.length),
      ),
    ],

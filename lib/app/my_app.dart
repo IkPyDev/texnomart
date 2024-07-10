@@ -76,7 +76,7 @@ Route ganerate(RouteSettings set) {
     case '/':
       return MaterialPageRoute(
         builder: (con) => BlocProvider(
-          create: (context) => MainBloc(),
+          create: (context) => MainBloc()..add(LoadAllBasketData()),
           child: const MainScreens(),
         ),
       );

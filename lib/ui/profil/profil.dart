@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
 import 'package:texnomart/ui/category/category_Screens.dart';
 import 'package:texnomart/ui/profil/item_profil.dart';
+import 'package:texnomart/ui/profil/profil_likes/like_screens.dart';
 import 'package:texnomart/utils/status.dart';
 
 import '../../date/source/local/hive/item_hive.dart';
@@ -99,7 +100,14 @@ class _ProfilState extends State<Profil> {
                 GestureDetector(
                     onTap: (){
 
-                      Navigator.of(context).pushNamed('/likes',);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (c) => ProfilBloc()..add(GetLoadProfilEvent()),
+                                child: LikeScreens(
+                                ),
+                              )));
                     },
                     child: getItem(Icons.favorite_outline, "Sevimlilar")),
                 getItem(Icons.compare_arrows, "Taqoslash"),

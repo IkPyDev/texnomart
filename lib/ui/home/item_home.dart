@@ -2,10 +2,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pannable_rating_bar/flutter_pannable_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:texnomart/date/source/local/hive/item_hive.dart';
 import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
+import 'package:texnomart/utils/to_value.dart';
 
 import '../../constats/const.dart';
 import '../../date/source/remote/response/special_product_response/special_product_response.dart';
@@ -27,6 +27,7 @@ class _ItemHomeState extends State<ItemHome> {
   late bool isLike;
   void initState() {
     isLike = ItemHiveManager.isItemLike(widget.items.id.toString());
+
     super.initState();
   }
   @override
@@ -40,7 +41,7 @@ class _ItemHomeState extends State<ItemHome> {
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(25)),
-        height: 150,
+        height: 180,
         width: 200,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,6 +49,24 @@ class _ItemHomeState extends State<ItemHome> {
           children: [
             Stack(
               children: [
+                // Positioned(
+                //   left: 5,
+                //   top: 10,
+                //   child: Container(
+                //     padding: const EdgeInsets.all(4),
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(6),
+                //       color: _colorFromHex(widget.items.stickers?[0].backgroundColor??""),
+                //     ),
+                //     child: Text(
+                //       widget.items.stickers?[0].name??"",
+                //       style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                //         fontWeight: FontWeight.bold,
+                //         color: _colorFromHex(widget.items.stickers?[0].textColor ?? ""),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 // Positioned(
                 //   left: 10,
                 //     top: 10,
@@ -86,34 +105,70 @@ class _ItemHomeState extends State<ItemHome> {
                 //     child: SvgPicture.network(items.saleMonths?[0].image ?? "https://i.imgur.com/xHcRRx6.png",height: 25,))
               ],
             ),
-            Text(
-              widget.items.name!,
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: PannableRatingBar(
-                rate: 4,
-                items: List.generate(
-                    5,
-                    (index) => const RatingWidget(
-                          selectedColor: Colors.yellow,
-                          unSelectedColor: Colors.grey,
-                          child: Icon(
-                            Icons.star,
-                            size: 20,
-                          ),
-                        )),
-                onChanged: (_) {
-                  // the rating value is updated on tap or drag.
-                },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Text(
+                widget.items.name!,
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             ),
-            Text("${widget.items.salePrice} Som",
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(children: [for (int i = 0; i < 5; ++i) Icon(Icons.star, color: Colors.grey[400], size: 18)]),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 3),
+                    padding: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "${(widget.items.salePrice! * 1.36 / 24).toString().toValue()} so'm / 24 oy ",
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 3),
+                    padding: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withAlpha(100),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "${(widget.items.salePrice! / 12).toString().toValue()} so'm / 12 oy ",
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    margin: EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.all(3),
+                    child: Row(
+                      children: [
+                        Text(
+                          "${widget.items.salePrice.toString().toValue()} so'm",
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Text("${widget.items.salePrice} Som",
+            //     style: const TextStyle(
+            //         color: Colors.black,
+            //         fontSize: 20,
+            //         fontWeight: FontWeight.bold)),
           ],
         ),
       ),
@@ -127,7 +182,7 @@ class _ItemHomeState extends State<ItemHome> {
           var item = ItemHive(
               id: widget.items.id.toString(),
               name: widget.items.name ?? "",
-              price: widget.items.salePrice.toString() ?? "",
+              price: widget.items.finishPrice.toString() ?? "",
               img: widget.items.image ?? ""
           );
           ItemHiveManager.addItem(item);
@@ -162,4 +217,12 @@ class _ItemHomeState extends State<ItemHome> {
           height: 30,
         ));
   }
+}
+
+Color _colorFromHex(String hexColor) {
+  hexColor = hexColor.toUpperCase().replaceAll('#', '');
+  if (hexColor.length == 6) {
+    hexColor = 'FF$hexColor';
+  }
+  return Color(int.parse(hexColor, radix: 16));
 }

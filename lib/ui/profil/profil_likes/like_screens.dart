@@ -12,32 +12,37 @@ class LikeScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ProfilBloc>().add(GetLoadProfilEvent());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
       ),
-
       body: BlocBuilder<ProfilBloc, ProfilState>(
         builder: (context, state) {
-          return switch(state.status){
-            
+          return switch (state.status) {
             // TODO: Handle this case.
-            Status.initial => const Center(child: Text("Initial"),),
+            Status.initial => const Center(
+                child: Text("Initial"),
+              ),
             // TODO: Handle this case.
-            Status.loading =>getLoading(),
+            Status.loading => const Center(
+              child: Text("Initial"),
+            ),
             // TODO: Handle this case.
             Status.success => getAll(state.items ?? [], context),
             // TODO: Handle this case.
-            Status.fail => const Center(child: Text(" Fail  data"),),
+            Status.fail => const Center(
+                child: Text(" Fail  data"),
+              ),
           };
         },
       ),
     );
   }
 
-  Widget getAll(List<ItemHive> data,
-      BuildContext context) {
-    if(data.isEmpty){
+  Widget getAll(List<ItemHive> data, BuildContext context) {
+    if (data.isEmpty) {
       return Container(
         alignment: Alignment.center,
         child: Text("Sevimlilar yoq"),
@@ -51,17 +56,14 @@ class LikeScreens extends StatelessWidget {
             mainAxisSpacing: 8.0, // spacing between rows
             crossAxisSpacing: 12.0,
             childAspectRatio: 1 / 2 // spacing between columns
-        ),
+            ),
         padding: EdgeInsets.all(12),
         itemCount: data.length,
         itemBuilder: (c, i) {
           var item = data[i];
-          return ItemProfil(() {
-
-          }, data: item, click: (id) {
+          return ItemProfil(() {}, data: item, click: (id) {
             Navigator.pushNamed(context, '/detail', arguments: id);
           });
         });
   }
-
 }

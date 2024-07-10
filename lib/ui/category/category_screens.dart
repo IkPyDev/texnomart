@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../presentation/bloc/category/category_bloc.dart';
 import 'package:texnomart/ui/category/category_data.dart';
-import '../../utils/status.dart';
+import 'package:texnomart/utils/widget.dart';
 
 import '../../date/source/remote/response/products_all_category/products_all_category.dart';
+import '../../presentation/bloc/category/category_bloc.dart';
+import '../../presentation/bloc/detail/detail_bloc.dart';
+import '../../utils/status.dart';
+import '../detail/detail_screens.dart';
 import 'item_category.dart';
 
 class CategoryScreen extends StatefulWidget {
   final CategoryItemData data;
-   const CategoryScreen({required this.data,super.key });
+
+  const CategoryScreen({required this.data, super.key});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
@@ -18,14 +22,12 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   void initState() {
-
     super.initState();
     // context.read<CategoryBloc>().add(GetSlugCategoryEvent(slug: args.slug));
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffffba08),
@@ -52,9 +54,21 @@ class _CategoryScreenState extends State<CategoryScreen> {
             case Status.fail:
               return getFail(state.errorMessage.toString());
             case Status.success:
-              return getSuccess(state.data!, click: (String id) {
-                Navigator.pushNamed(context, '/detail', arguments: id);
-              });
+              {
+                return getSuccess(state.data!, click: (String id) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BlocProvider(
+                                create: (c) =>
+                                    DetailBloc()..add(DetailIdEvent(id: id)),
+                                child: DetailScreens(
+                                  args: id,
+                                ),
+                              )));
+                });
+              }
+
             default:
               return const SizedBox.shrink();
           }
@@ -64,14 +78,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 }
 
-Widget getSuccess(GetProductAllCategoryData data, {required void Function(String id) click}) {
+Widget getSuccess(GetProductAllCategoryData data,
+    {required void Function(String id) click}) {
   return GridView.builder(
     scrollDirection: Axis.vertical,
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 2, // number of items in each row
       mainAxisSpacing: 8.0, // spacing between rows
       crossAxisSpacing: 12.0,
-      childAspectRatio: 1 / 2, // spacing between columns
+      childAspectRatio: 3/7, // spacing between columns
     ),
     padding: const EdgeInsets.all(12),
     itemCount: data.products?.length,
@@ -89,8 +104,4 @@ Widget getSuccess(GetProductAllCategoryData data, {required void Function(String
 
 Widget getFail(String errorMessage) {
   return Center(child: Text(errorMessage));
-}
-
-Widget getLoading() {
-  return const Center(child: CircularProgressIndicator());
 }

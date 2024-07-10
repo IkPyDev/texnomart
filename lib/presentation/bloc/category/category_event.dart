@@ -9,3 +9,8 @@ final class GetSlugCategoryEvent extends CategoryEvent{
   GetSlugCategoryEvent({required this.slug});
 
 }
+
+final class SelectSlugCategoryEvent extends CategoryEvent{
+  final String childSlug;
+  SelectSlugCategoryEvent( {required this.childSlug});
+}
