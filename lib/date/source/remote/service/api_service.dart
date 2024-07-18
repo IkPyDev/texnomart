@@ -4,6 +4,7 @@ import 'package:texnomart/date/source/remote/response/category_response/category
 import 'package:texnomart/date/source/remote/response/products_all_category/products_all_category.dart';
 import 'package:texnomart/date/source/remote/response/special_product_response/special_product_response.dart';
 
+import '../../../model/model.dart';
 import '../response/category_menu/catalog_menu.dart';
 import '../response/childs_response/childs_respose.dart';
 import '../response/detail_responce/detail_responce.dart';
@@ -44,4 +45,7 @@ abstract class ApiService {
 
   @GET("web/v1/header/popup-menu-catalog")
   Future<ChildsRespose> getPopMenu();
+  
+  @GET("web/v1/region/stores-list")
+  Future<SerModel> getAllCountry();
 }

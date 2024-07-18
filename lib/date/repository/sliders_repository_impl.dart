@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:texnomart/date/model/model.dart';
 import 'package:texnomart/date/source/remote/response/category_menu/catalog_menu.dart';
 import 'package:texnomart/date/source/remote/response/category_response/category_response.dart';
 import 'package:texnomart/date/source/remote/response/detail_responce/detail_responce.dart';
@@ -100,6 +101,18 @@ class RepositoryImpl extends TexnoRepository {
       final respone = await apiService.getPopMenu();
       return respone;
     }on DioException{
+      rethrow;
+    }
+
+  }
+
+  @override
+  Future<SerModel> getAllCountry() async {
+
+    try{
+      final res = await apiService.getAllCountry();
+      return res;
+    }catch(e){
       rethrow;
     }
 

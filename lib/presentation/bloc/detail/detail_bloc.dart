@@ -16,9 +16,12 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
     final repository = di<TexnoRepository>();
     on<DetailIdEvent>((event, emit) async {
       emit(state.copyWith(
-          status: Status.loading, isFavorite: StatusDetail.loading));
+          status: Status.loading, isFavorite: StatusDetail.loading,));
       try {
+        print("HHHHHHHHHHHHHHHHHHHHHHHH");
+        print(event.id);
         final res = await repository.getDetail(id: event.id);
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         bool isFavorite = ItemHiveManager.isFavorite(event.id);
         if (!isFavorite) {
           print("is Bloc Add");
@@ -29,9 +32,13 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
           emit(state.copyWith(isFavorite: StatusDetail.delete));
         }
         print("is bloc sec");
+        print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVV");
+        print(res.data?.data);
         emit(state.copyWith(status: Status.success, detail: res.data?.data));
       } catch (e) {
-        emit(state.copyWith(status: Status.fail));
+        print("ERRRRRRROOOR");
+        print(e);
+        emit(state.copyWith(status: Status.fail,errorMessage: e.toString()));
       }
     });
     on<DetailAddFavoriteEvent>((event, emit) async {

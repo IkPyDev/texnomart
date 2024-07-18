@@ -1,4 +1,5 @@
 
+import '../date/model/model.dart';
 import '../date/source/remote/response/category_menu/catalog_menu.dart';
 import '../date/source/remote/response/category_response/category_response.dart';
 import '../date/source/remote/response/childs_response/childs_respose.dart';
@@ -17,6 +18,7 @@ abstract class TexnoRepository {
   Future<DetailResponse> getDetail({required String id});
   Future<CatalogMenu> getCatalogMenu();
   Future<ChildsRespose> getPopMenu();
+  Future<SerModel> getAllCountry();
 
 
 }

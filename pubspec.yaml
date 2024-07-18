@@ -55,6 +55,11 @@ dependencies:
   lottie: ^3.1.2
   avatar_glow: ^3.0.1
   equatable: ^2.0.5
+  yandex_mapkit: ^4.1.0
+  gap: ^3.0.1
+  url_launcher: ^6.3.0
+
+
 
 
 
