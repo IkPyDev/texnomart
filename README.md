@@ -1,5 +1,9 @@
 # Texnomart
 
+## Foydalanilgan texnalogiyalar: *Bloc*,*Dio*,*Retrfit*,*Freezed*,*Get_it*,*Hive*,*Lottie*,*Yandex_map*
+
+
+
 ## Ilovadan suratlar
 
 <img src="https://github.com/user-attachments/assets/4891baed-1121-4d69-adcd-8f3911060b24" alt="Image 1" width="200"/>
