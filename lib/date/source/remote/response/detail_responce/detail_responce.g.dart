@@ -57,7 +57,10 @@ _$GetDetailImpl _$$GetDetailImplFromJson(Map<String, dynamic> json) =>
       (json['sale_price'] as num?)?.toInt(),
       (json['loan_price'] as num?)?.toInt(),
       json['old_price'] as String?,
-      json['minimal_loan_price'] as String?,
+      json['minimal_loan_price'] == null
+          ? null
+          : MinimalLoanPrice.fromJson(
+              json['minimal_loan_price'] as Map<String, dynamic>),
       json['code'] as String?,
       (json['sale_months'] as List<dynamic>?)
           ?.map((e) => SaleMonths.fromJson(e as Map<String, dynamic>))
@@ -104,7 +107,7 @@ Map<String, dynamic> _$$GetDetailImplToJson(_$GetDetailImpl instance) =>
       'sale_price': instance.salePrice,
       'loan_price': instance.loanPrice,
       'old_price': instance.oldPrice,
-      'minimal_loan_price': instance.minimalLoanPrice,
+      'minimal_loan_price': instance.minimalLoanPrice?.toJson(),
       'code': instance.code,
       'sale_months': instance.saleMonths?.map((e) => e.toJson()).toList(),
       'reviews_count': instance.reviewsCount,
@@ -151,6 +154,24 @@ Map<String, dynamic> _$$SaleMonthsImplToJson(_$SaleMonthsImpl instance) =>
       'name': instance.name,
       'key': instance.key,
       'image': instance.image,
+    };
+
+_$MinimalLoanPriceImpl _$$MinimalLoanPriceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MinimalLoanPriceImpl(
+      json['min_monthly_price'] as String?,
+      (json['month_number'] as num?)?.toInt(),
+      json['min_loan_type'] as String?,
+      json['description'] as String?,
+    );
+
+Map<String, dynamic> _$$MinimalLoanPriceImplToJson(
+        _$MinimalLoanPriceImpl instance) =>
+    <String, dynamic>{
+      'min_monthly_price': instance.minMonthlyPrice,
+      'month_number': instance.monthNumber,
+      'min_loan_type': instance.minLoanType,
+      'description': instance.description,
     };
 
 _$SeoImpl _$$SeoImplFromJson(Map<String, dynamic> json) => _$SeoImpl(

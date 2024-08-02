@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:texnomart/date/source/local/hive/basket_hive.dart';
 import 'package:texnomart/presentation/bloc/main/main_bloc.dart';
+import 'package:texnomart/utils/to_value.dart';
 import 'package:texnomart/utils/widget.dart';
 
 import '../../constats/const.dart';
@@ -17,8 +18,8 @@ import 'detail_sliders.dart';
 
 class DetailScreens extends StatefulWidget {
 
-   String args;
-   DetailScreens({required this.args,super.key,});
+ final String args;
+  const DetailScreens({required this.args,super.key,});
 
 
   @override
@@ -40,21 +41,23 @@ class _DetailScreensState extends State<DetailScreens> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DetailBloc, DetailState>(
-  builder: (context, state) {
-    return switch (state.status) {
-      Status.loading => Scaffold(appBar: AppBar(backgroundColor: Theme.of(context).primaryColor,),body: getLoading()),
-      Status.success => getScafold(state.detail!),
-      Status.fail => Center(
-        child: Text(state.errorMessage.toString()),
-      ),
-      Status.initial => Center(),
-      null => Center(),
-    };
+      builder: (context, state) {
+
+
+        return switch (state.status) {
+          Status.loading => Scaffold(appBar: AppBar(backgroundColor: Theme.of(context).primaryColor,),body: getLoading()),
+          Status.success => getScafold(state.detail!),
+          Status.fail => Center(
+            child: Text(state.errorMessage.toString()),
+          ),
+          Status.initial => Center(),
+          null => Center(),
+        };
 
 
 
-  },
-);
+      },
+    );
   }
 
   Widget getScafold(GetDetail data){
@@ -80,7 +83,7 @@ class _DetailScreensState extends State<DetailScreens> {
   }
 
   Widget getData(GetDetail data) {
-    print("detail get");
+    // print("detail get");
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
@@ -168,14 +171,14 @@ class _DetailScreensState extends State<DetailScreens> {
 
                           return switch (state.isFavorite) {
                             null => const Center(
-                                child: CircularProgressIndicator(),
-                              ),
+                              child: CircularProgressIndicator(),
+                            ),
                             StatusDetail.add => isFavoriteItem(basketItem),
                             StatusDetail.delete => isDiDisFavoriteItem(
                                 state.detail?.id?.toString() ?? ""),
                             StatusDetail.loading => Center(
-                                child: CircularProgressIndicator(),
-                              ),
+                              child: CircularProgressIndicator(),
+                            ),
                           };
                         },
                       ),
@@ -247,7 +250,7 @@ class _DetailScreensState extends State<DetailScreens> {
                               ),
                               Spacer(),
                               Text(
-                                "oyiga 309 834 so'm",
+                                "oyiga ${(data.loanPrice! * 1.33 / 12).toStringAsFixed(2).toValue()} so'm",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               )
                             ],
@@ -279,7 +282,8 @@ class _DetailScreensState extends State<DetailScreens> {
                                           color: Colors.black38, fontSize: 14),
                                     ),
                                     Text(
-                                      "1 859 000 so'm",
+                                      "${(data.loanPrice! * 1.33 ).toStringAsFixed(2).toValue()}som",
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(fontSize: 18),
                                     )
                                   ],
@@ -287,7 +291,7 @@ class _DetailScreensState extends State<DetailScreens> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
+                                const EdgeInsets.symmetric(horizontal: 15),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width / 3,
                                   decoration: BoxDecoration(
@@ -298,11 +302,11 @@ class _DetailScreensState extends State<DetailScreens> {
                                         vertical: 10),
                                     child: Center(
                                         child: Text(
-                                      "Rasmiylashtirish",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    )),
+                                          "Rasmiylashtirish",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        )),
                                   ),
                                 ),
                               )

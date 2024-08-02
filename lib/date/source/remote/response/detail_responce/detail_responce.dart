@@ -44,7 +44,7 @@ class GetDetail with _$GetDetail {
       int? salePrice,
       int? loanPrice,
       String? oldPrice,
-      String? minimalLoanPrice,
+      MinimalLoanPrice? minimalLoanPrice,
       String? code,
       List<SaleMonths>? saleMonths,
       int? reviewsCount,
@@ -89,6 +89,20 @@ class SaleMonths with _$SaleMonths {
 
   factory SaleMonths.fromJson(Map<String, dynamic> json) =>
       _$SaleMonthsFromJson(json);
+}
+@freezed
+class MinimalLoanPrice with _$MinimalLoanPrice {
+  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+
+  const factory MinimalLoanPrice(
+      String? minMonthlyPrice,
+      int? monthNumber,
+      String? minLoanType,
+      String? description,
+      ) = _MinimalLoanPrice;
+
+  factory MinimalLoanPrice.fromJson(Map<String, dynamic> json) =>
+      _$MinimalLoanPriceFromJson(json);
 }
 
 @freezed

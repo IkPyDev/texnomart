@@ -404,7 +404,7 @@ mixin _$GetDetail {
   int? get salePrice => throw _privateConstructorUsedError;
   int? get loanPrice => throw _privateConstructorUsedError;
   String? get oldPrice => throw _privateConstructorUsedError;
-  String? get minimalLoanPrice => throw _privateConstructorUsedError;
+  MinimalLoanPrice? get minimalLoanPrice => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
   List<SaleMonths>? get saleMonths => throw _privateConstructorUsedError;
   int? get reviewsCount => throw _privateConstructorUsedError;
@@ -446,7 +446,7 @@ abstract class $GetDetailCopyWith<$Res> {
       int? salePrice,
       int? loanPrice,
       String? oldPrice,
-      String? minimalLoanPrice,
+      MinimalLoanPrice? minimalLoanPrice,
       String? code,
       List<SaleMonths>? saleMonths,
       int? reviewsCount,
@@ -463,6 +463,7 @@ abstract class $GetDetailCopyWith<$Res> {
       int? promotion0012Price});
 
   $CatalogCopyWith<$Res>? get catalog;
+  $MinimalLoanPriceCopyWith<$Res>? get minimalLoanPrice;
   $SeoCopyWith<$Res>? get seo;
 }
 
@@ -559,7 +560,7 @@ class _$GetDetailCopyWithImpl<$Res, $Val extends GetDetail>
       minimalLoanPrice: freezed == minimalLoanPrice
           ? _value.minimalLoanPrice
           : minimalLoanPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as MinimalLoanPrice?,
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -633,6 +634,18 @@ class _$GetDetailCopyWithImpl<$Res, $Val extends GetDetail>
 
   @override
   @pragma('vm:prefer-inline')
+  $MinimalLoanPriceCopyWith<$Res>? get minimalLoanPrice {
+    if (_value.minimalLoanPrice == null) {
+      return null;
+    }
+
+    return $MinimalLoanPriceCopyWith<$Res>(_value.minimalLoanPrice!, (value) {
+      return _then(_value.copyWith(minimalLoanPrice: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $SeoCopyWith<$Res>? get seo {
     if (_value.seo == null) {
       return null;
@@ -665,7 +678,7 @@ abstract class _$$GetDetailImplCopyWith<$Res>
       int? salePrice,
       int? loanPrice,
       String? oldPrice,
-      String? minimalLoanPrice,
+      MinimalLoanPrice? minimalLoanPrice,
       String? code,
       List<SaleMonths>? saleMonths,
       int? reviewsCount,
@@ -683,6 +696,8 @@ abstract class _$$GetDetailImplCopyWith<$Res>
 
   @override
   $CatalogCopyWith<$Res>? get catalog;
+  @override
+  $MinimalLoanPriceCopyWith<$Res>? get minimalLoanPrice;
   @override
   $SeoCopyWith<$Res>? get seo;
 }
@@ -778,7 +793,7 @@ class __$$GetDetailImplCopyWithImpl<$Res>
       freezed == minimalLoanPrice
           ? _value.minimalLoanPrice
           : minimalLoanPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as MinimalLoanPrice?,
       freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -925,7 +940,7 @@ class _$GetDetailImpl implements _GetDetail {
   @override
   final String? oldPrice;
   @override
-  final String? minimalLoanPrice;
+  final MinimalLoanPrice? minimalLoanPrice;
   @override
   final String? code;
   final List<SaleMonths>? _saleMonths;
@@ -1130,7 +1145,7 @@ abstract class _GetDetail implements GetDetail {
       final int? salePrice,
       final int? loanPrice,
       final String? oldPrice,
-      final String? minimalLoanPrice,
+      final MinimalLoanPrice? minimalLoanPrice,
       final String? code,
       final List<SaleMonths>? saleMonths,
       final int? reviewsCount,
@@ -1174,7 +1189,7 @@ abstract class _GetDetail implements GetDetail {
   @override
   String? get oldPrice;
   @override
-  String? get minimalLoanPrice;
+  MinimalLoanPrice? get minimalLoanPrice;
   @override
   String? get code;
   @override
@@ -1561,6 +1576,210 @@ abstract class _SaleMonths implements SaleMonths {
   @override
   @JsonKey(ignore: true)
   _$$SaleMonthsImplCopyWith<_$SaleMonthsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MinimalLoanPrice _$MinimalLoanPriceFromJson(Map<String, dynamic> json) {
+  return _MinimalLoanPrice.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MinimalLoanPrice {
+  String? get minMonthlyPrice => throw _privateConstructorUsedError;
+  int? get monthNumber => throw _privateConstructorUsedError;
+  String? get minLoanType => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MinimalLoanPriceCopyWith<MinimalLoanPrice> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MinimalLoanPriceCopyWith<$Res> {
+  factory $MinimalLoanPriceCopyWith(
+          MinimalLoanPrice value, $Res Function(MinimalLoanPrice) then) =
+      _$MinimalLoanPriceCopyWithImpl<$Res, MinimalLoanPrice>;
+  @useResult
+  $Res call(
+      {String? minMonthlyPrice,
+      int? monthNumber,
+      String? minLoanType,
+      String? description});
+}
+
+/// @nodoc
+class _$MinimalLoanPriceCopyWithImpl<$Res, $Val extends MinimalLoanPrice>
+    implements $MinimalLoanPriceCopyWith<$Res> {
+  _$MinimalLoanPriceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? minMonthlyPrice = freezed,
+    Object? monthNumber = freezed,
+    Object? minLoanType = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_value.copyWith(
+      minMonthlyPrice: freezed == minMonthlyPrice
+          ? _value.minMonthlyPrice
+          : minMonthlyPrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      monthNumber: freezed == monthNumber
+          ? _value.monthNumber
+          : monthNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
+      minLoanType: freezed == minLoanType
+          ? _value.minLoanType
+          : minLoanType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MinimalLoanPriceImplCopyWith<$Res>
+    implements $MinimalLoanPriceCopyWith<$Res> {
+  factory _$$MinimalLoanPriceImplCopyWith(_$MinimalLoanPriceImpl value,
+          $Res Function(_$MinimalLoanPriceImpl) then) =
+      __$$MinimalLoanPriceImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? minMonthlyPrice,
+      int? monthNumber,
+      String? minLoanType,
+      String? description});
+}
+
+/// @nodoc
+class __$$MinimalLoanPriceImplCopyWithImpl<$Res>
+    extends _$MinimalLoanPriceCopyWithImpl<$Res, _$MinimalLoanPriceImpl>
+    implements _$$MinimalLoanPriceImplCopyWith<$Res> {
+  __$$MinimalLoanPriceImplCopyWithImpl(_$MinimalLoanPriceImpl _value,
+      $Res Function(_$MinimalLoanPriceImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? minMonthlyPrice = freezed,
+    Object? monthNumber = freezed,
+    Object? minLoanType = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_$MinimalLoanPriceImpl(
+      freezed == minMonthlyPrice
+          ? _value.minMonthlyPrice
+          : minMonthlyPrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == monthNumber
+          ? _value.monthNumber
+          : monthNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
+      freezed == minLoanType
+          ? _value.minLoanType
+          : minLoanType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+class _$MinimalLoanPriceImpl implements _MinimalLoanPrice {
+  const _$MinimalLoanPriceImpl(this.minMonthlyPrice, this.monthNumber,
+      this.minLoanType, this.description);
+
+  factory _$MinimalLoanPriceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MinimalLoanPriceImplFromJson(json);
+
+  @override
+  final String? minMonthlyPrice;
+  @override
+  final int? monthNumber;
+  @override
+  final String? minLoanType;
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'MinimalLoanPrice(minMonthlyPrice: $minMonthlyPrice, monthNumber: $monthNumber, minLoanType: $minLoanType, description: $description)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MinimalLoanPriceImpl &&
+            (identical(other.minMonthlyPrice, minMonthlyPrice) ||
+                other.minMonthlyPrice == minMonthlyPrice) &&
+            (identical(other.monthNumber, monthNumber) ||
+                other.monthNumber == monthNumber) &&
+            (identical(other.minLoanType, minLoanType) ||
+                other.minLoanType == minLoanType) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, minMonthlyPrice, monthNumber, minLoanType, description);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MinimalLoanPriceImplCopyWith<_$MinimalLoanPriceImpl> get copyWith =>
+      __$$MinimalLoanPriceImplCopyWithImpl<_$MinimalLoanPriceImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MinimalLoanPriceImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MinimalLoanPrice implements MinimalLoanPrice {
+  const factory _MinimalLoanPrice(
+      final String? minMonthlyPrice,
+      final int? monthNumber,
+      final String? minLoanType,
+      final String? description) = _$MinimalLoanPriceImpl;
+
+  factory _MinimalLoanPrice.fromJson(Map<String, dynamic> json) =
+      _$MinimalLoanPriceImpl.fromJson;
+
+  @override
+  String? get minMonthlyPrice;
+  @override
+  int? get monthNumber;
+  @override
+  String? get minLoanType;
+  @override
+  String? get description;
+  @override
+  @JsonKey(ignore: true)
+  _$$MinimalLoanPriceImplCopyWith<_$MinimalLoanPriceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
