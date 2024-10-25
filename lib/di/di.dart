@@ -17,7 +17,7 @@ void setup (){
   dio.interceptors.add(
     TalkerDioLogger(
       settings: const TalkerDioLoggerSettings(
-        // printRequestHeaders: true,
+        printRequestHeaders: true,
         printRequestData: true,
         printResponseData: true,
        // printResponseHea
