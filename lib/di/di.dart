@@ -19,10 +19,10 @@ void setup (){
       settings: const TalkerDioLoggerSettings(
         // printRequestHeaders: true,
         printRequestData: true,
-        // printResponseData: true,
-        // printResponseHea
+        printResponseData: true,
+       // printResponseHea
         // ders: true,
-        // printResponseMessage: true,
+         printResponseMessage: true,
       ),
     ),
   );
