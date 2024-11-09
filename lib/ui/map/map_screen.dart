@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:texnomart/date/model/model.dart';
+import 'package:texnomart/data/model/model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 

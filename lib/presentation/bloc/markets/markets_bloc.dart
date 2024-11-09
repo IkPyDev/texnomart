@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../date/model/model.dart';
+import '../../../data/model/model.dart';
 import '../../../di/di.dart';
 import '../../../domain/repository.dart';
 import '../../../utils/status.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:texnomart/ui/map/map_screen.dart';
 import 'package:texnomart/utils/widget.dart';
-import '../../date/model/model.dart';
+import '../../data/model/model.dart';
 import '../../presentation/bloc/markets/markets_bloc.dart';
 import '../../utils/status.dart';
 

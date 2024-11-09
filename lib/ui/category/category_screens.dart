@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/data/source/remote/response/products_all_category/products_all_category.dart';
+import 'package:texnomart/presentation/bloc/category/category_bloc.dart';
+import 'package:texnomart/presentation/bloc/detail/detail_bloc.dart';
 import 'package:texnomart/ui/category/category_data.dart';
+import 'package:texnomart/ui/detail/detail_screens.dart';
+import 'package:texnomart/utils/status.dart';
 import 'package:texnomart/utils/widget.dart';
 
-import '../../date/source/remote/response/products_all_category/products_all_category.dart';
-import '../../presentation/bloc/category/category_bloc.dart';
-import '../../presentation/bloc/detail/detail_bloc.dart';
-import '../../utils/status.dart';
-import '../detail/detail_screens.dart';
 import 'item_category.dart';
 
 class CategoryScreen extends StatefulWidget {

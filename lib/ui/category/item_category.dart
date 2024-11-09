@@ -7,9 +7,9 @@ import 'package:texnomart/ui/profil/profil.dart';
 import 'package:texnomart/utils/to_value.dart';
 
 import '../../constats/const.dart';
-import '../../date/source/local/hive/item_hive.dart';
-import '../../date/source/local/hive/item_hive_manager.dart';
-import '../../date/source/remote/response/products_all_category/products_all_category.dart';
+import '../../data/source/local/hive/item_hive.dart';
+import '../../data/source/local/hive/item_hive_manager.dart';
+import '../../data/source/remote/response/products_all_category/products_all_category.dart';
 import '../../presentation/bloc/profil/profil_bloc.dart';
 
 class ItemCategory extends StatefulWidget {

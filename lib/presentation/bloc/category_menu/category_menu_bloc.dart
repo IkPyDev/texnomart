@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:texnomart/domain/repository.dart';
 
-import '../../../date/source/remote/response/category_menu/catalog_menu.dart';
-import '../../../date/source/remote/response/detail_responce/detail_responce.dart';
+import '../../../data/source/remote/response/category_menu/catalog_menu.dart';
+import '../../../data/source/remote/response/detail_responce/detail_responce.dart';
 import '../../../di/di.dart';
 import '../../../utils/status.dart';
 

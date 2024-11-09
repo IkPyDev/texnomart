@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:texnomart/date/source/local/hive/basket_hive.dart';
+import 'package:texnomart/data/source/local/hive/basket_hive.dart';
 import 'package:texnomart/domain/repository.dart';
 
-import '../../../date/source/local/hive/item_hive_manager.dart';
-import '../../../date/source/remote/response/detail_responce/detail_responce.dart';
+import '../../../data/source/local/hive/item_hive_manager.dart';
+import '../../../data/source/remote/response/detail_responce/detail_responce.dart';
 import '../../../di/di.dart';
 import '../../../utils/status.dart';
 

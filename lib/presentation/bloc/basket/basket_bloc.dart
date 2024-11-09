@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:texnomart/date/source/local/hive/basket_hive.dart';
-import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
+import 'package:texnomart/data/source/local/hive/basket_hive.dart';
+import 'package:texnomart/data/source/local/hive/item_hive_manager.dart';
 
 import '../../../utils/status.dart';
 

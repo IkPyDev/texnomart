@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
+import 'package:texnomart/data/source/local/hive/item_hive_manager.dart';
 
-import '../../../date/source/local/hive/item_hive.dart';
+import '../../../data/source/local/hive/item_hive.dart';
 import '../../../utils/status.dart';
 
 part 'profil_event.dart';

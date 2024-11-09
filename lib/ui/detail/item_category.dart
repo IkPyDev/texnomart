@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pannable_rating_bar/flutter_pannable_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../date/source/remote/response/special_product_response/special_product_response.dart';
+import '../../data/source/remote/response/special_product_response/special_product_response.dart';
 
 class ItemHome extends StatelessWidget {
   final SpPrItems items;

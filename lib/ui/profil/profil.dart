@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
+import 'package:texnomart/data/source/local/hive/item_hive_manager.dart';
 import 'package:texnomart/presentation/bloc/markets/markets_bloc.dart';
 import 'package:texnomart/ui/category/category_Screens.dart';
 import 'package:texnomart/ui/markets/markets_screens.dart';
@@ -9,7 +9,7 @@ import 'package:texnomart/ui/profil/item_profil.dart';
 import 'package:texnomart/ui/profil/profil_likes/like_screens.dart';
 import 'package:texnomart/utils/status.dart';
 
-import '../../date/source/local/hive/item_hive.dart';
+import '../../data/source/local/hive/item_hive.dart';
 import '../../presentation/bloc/profil/profil_bloc.dart';
 
 class Profil extends StatefulWidget {

@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:texnomart/date/model/model.dart';
-import 'package:texnomart/date/source/remote/response/category_menu/catalog_menu.dart';
-import 'package:texnomart/date/source/remote/response/category_response/category_response.dart';
-import 'package:texnomart/date/source/remote/response/detail_responce/detail_responce.dart';
-import 'package:texnomart/date/source/remote/response/products_all_category/products_all_category.dart';
-import 'package:texnomart/date/source/remote/response/sliders_response/sliders_response.dart';
-import 'package:texnomart/date/source/remote/response/special_product_response/special_product_response.dart';
-import 'package:texnomart/date/source/remote/service/api_service.dart';
+import 'package:texnomart/data/model/model.dart';
+import 'package:texnomart/data/source/remote/response/category_menu/catalog_menu.dart';
+import 'package:texnomart/data/source/remote/response/category_response/category_response.dart';
+import 'package:texnomart/data/source/remote/response/detail_responce/detail_responce.dart';
+import 'package:texnomart/data/source/remote/response/products_all_category/products_all_category.dart';
+import 'package:texnomart/data/source/remote/response/sliders_response/sliders_response.dart';
+import 'package:texnomart/data/source/remote/response/special_product_response/special_product_response.dart';
+import 'package:texnomart/data/source/remote/service/api_service.dart';
 
 import '../../di/di.dart';
 import '../../domain/repository.dart';
@@ -24,7 +24,6 @@ class RepositoryImpl extends TexnoRepository {
     } on DioException {
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -35,7 +34,6 @@ class RepositoryImpl extends TexnoRepository {
     } on DioException {
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -46,7 +44,6 @@ class RepositoryImpl extends TexnoRepository {
     } on DioException {
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -57,7 +54,6 @@ class RepositoryImpl extends TexnoRepository {
     } on DioException {
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -70,7 +66,6 @@ class RepositoryImpl extends TexnoRepository {
     } on DioException {
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -81,7 +76,6 @@ class RepositoryImpl extends TexnoRepository {
     }on DioException{
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -92,7 +86,6 @@ class RepositoryImpl extends TexnoRepository {
     }on DioException{
       rethrow;
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -100,7 +93,7 @@ class RepositoryImpl extends TexnoRepository {
     try{
       final respone = await apiService.getPopMenu();
       return respone;
-    }on DioException{
+    }catch (e){
       rethrow;
     }
 

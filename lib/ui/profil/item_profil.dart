@@ -6,8 +6,8 @@ import 'package:flutter_pannable_rating_bar/flutter_pannable_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../constats/const.dart';
-import '../../date/source/local/hive/item_hive.dart';
-import '../../date/source/local/hive/item_hive_manager.dart';
+import '../../data/source/local/hive/item_hive.dart';
+import '../../data/source/local/hive/item_hive_manager.dart';
 import '../../presentation/bloc/profil/profil_bloc.dart';
 
 class ItemProfil extends StatefulWidget {

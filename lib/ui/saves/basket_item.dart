@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:texnomart/date/source/local/hive/basket_hive.dart';
+import 'package:texnomart/data/source/local/hive/basket_hive.dart';
 
 import '../../presentation/bloc/basket/basket_bloc.dart';
 import '../../presentation/bloc/main/main_bloc.dart';

@@ -3,12 +3,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:texnomart/date/source/local/hive/item_hive.dart';
-import 'package:texnomart/date/source/local/hive/item_hive_manager.dart';
+import 'package:texnomart/data/source/local/hive/item_hive.dart';
+import 'package:texnomart/data/source/local/hive/item_hive_manager.dart';
 import 'package:texnomart/utils/to_value.dart';
 
 import '../../constats/const.dart';
-import '../../date/source/remote/response/special_product_response/special_product_response.dart';
+import '../../data/source/remote/response/special_product_response/special_product_response.dart';
 import '../../presentation/bloc/profil/profil_bloc.dart';
 
 class ItemHome extends StatefulWidget {

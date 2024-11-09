@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
-import 'package:texnomart/date/source/remote/response/category_response/category_response.dart';
-import 'package:texnomart/date/source/remote/response/products_all_category/products_all_category.dart';
-import 'package:texnomart/date/source/remote/response/special_product_response/special_product_response.dart';
+import 'package:texnomart/data/model/model.dart';
+import 'package:texnomart/data/source/remote/response/category_menu/catalog_menu.dart';
+import 'package:texnomart/data/source/remote/response/category_response/category_response.dart';
+import 'package:texnomart/data/source/remote/response/childs_response/childs_respose.dart';
+import 'package:texnomart/data/source/remote/response/detail_responce/detail_responce.dart';
+import 'package:texnomart/data/source/remote/response/products_all_category/products_all_category.dart';
+import 'package:texnomart/data/source/remote/response/sliders_response/sliders_response.dart';
+import 'package:texnomart/data/source/remote/response/special_product_response/special_product_response.dart';
 
-import '../../../model/model.dart';
-import '../response/category_menu/catalog_menu.dart';
-import '../response/childs_response/childs_respose.dart';
-import '../response/detail_responce/detail_responce.dart';
-import '../response/sliders_response/sliders_response.dart';
 
 part 'api_service.g.dart';
 

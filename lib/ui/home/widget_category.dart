@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:texnomart/ui/category/category_data.dart';
 
-import '../../date/source/remote/response/category_response/category_response.dart';
+import '../../data/source/remote/response/category_response/category_response.dart';
 
 class CategoryWidget extends StatelessWidget {
   final List<CategoryItem> category;

@@ -6,7 +6,7 @@ import 'package:texnomart/presentation/bloc/category/category_bloc.dart';
 import 'package:texnomart/ui/category/category_Screens.dart';
 import 'package:texnomart/ui/category/category_data.dart';
 
-import '../../date/source/remote/response/category_menu/catalog_menu.dart';
+import '../../data/source/remote/response/category_menu/catalog_menu.dart';
 
 class CategoryMenuItem extends StatelessWidget {
   const CategoryMenuItem({super.key, required this.data});

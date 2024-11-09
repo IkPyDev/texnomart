@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../date/source/remote/response/sliders_response/sliders_response.dart';
+import '../../data/source/remote/response/sliders_response/sliders_response.dart';
 
 class Sliders extends StatefulWidget {
   final List<SlidersDatum> slidersResponse;

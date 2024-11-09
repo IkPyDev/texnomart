@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/ui/category/category_Screens.dart';
 import 'package:texnomart/utils/status.dart';
 
-import '../../../date/source/local/hive/item_hive.dart';
+import '../../../data/source/local/hive/item_hive.dart';
 import '../../../presentation/bloc/profil/profil_bloc.dart';
 import '../item_profil.dart';
 

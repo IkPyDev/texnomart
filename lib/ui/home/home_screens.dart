@@ -6,7 +6,7 @@ import 'package:texnomart/ui/detail/detail_screens.dart';
 import 'package:texnomart/ui/home/carusel.dart';
 import 'package:texnomart/ui/home/widget_category.dart';
 
-import '../../date/source/remote/response/special_product_response/special_product_response.dart';
+import '../../data/source/remote/response/special_product_response/special_product_response.dart';
 import '../../presentation/bloc/category/category_bloc.dart';
 import '../../utils/widget.dart';
 import '../category/category_screens.dart';
