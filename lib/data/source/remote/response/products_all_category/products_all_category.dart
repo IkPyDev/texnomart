@@ -5,7 +5,7 @@ part 'products_all_category.g.dart';
 
 @freezed
 class ProductAllCategory with _$ProductAllCategory {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ProductAllCategory(
       bool? success,
       String? message,

@@ -8,7 +8,7 @@ part 'category_response.freezed.dart';
 
 @freezed
 class CategoryResponse with _$CategoryResponse {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
 
   const factory CategoryResponse(
   bool? success,

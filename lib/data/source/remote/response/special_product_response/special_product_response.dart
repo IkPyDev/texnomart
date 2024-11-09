@@ -6,7 +6,7 @@ part 'special_product_response.g.dart';
 
 @freezed
 class SpecialProductResponse with _$SpecialProductResponse {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
 
   const factory SpecialProductResponse(
     bool? success,

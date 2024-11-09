@@ -5,7 +5,7 @@ part 'detail_responce.freezed.dart';
 
 @freezed
 class DetailResponse with _$DetailResponse {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory DetailResponse(
       bool? success,
       String? message,

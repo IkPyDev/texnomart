@@ -10,7 +10,7 @@ part 'sliders_response.freezed.dart';
 
 @freezed
 class SlidersResponse with _$SlidersResponse {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory SlidersResponse(
       bool? success,
       String? message,
