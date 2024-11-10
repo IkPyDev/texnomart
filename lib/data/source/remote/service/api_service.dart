@@ -5,7 +5,7 @@ import 'package:texnomart/data/source/remote/response/category_menu/catalog_menu
 import 'package:texnomart/data/source/remote/response/category_response/category_response.dart';
 import 'package:texnomart/data/source/remote/response/childs_response/childs_respose.dart';
 import 'package:texnomart/data/source/remote/response/detail_responce/detail_responce.dart';
-import 'package:texnomart/data/source/remote/response/products_all_category/products_all_category.dart';
+import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/data/source/remote/response/sliders_response/sliders_response.dart';
 import 'package:texnomart/data/source/remote/response/special_product_response/special_product_response.dart';
 

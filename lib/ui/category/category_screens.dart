@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:texnomart/data/source/remote/response/products_all_category/products_all_category.dart';
+import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/presentation/bloc/category/category_bloc.dart';
 import 'package:texnomart/presentation/bloc/detail/detail_bloc.dart';
 import 'package:texnomart/ui/category/category_data.dart';
@@ -78,7 +78,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 }
 
-Widget getSuccess(GetProductAllCategoryData data,
+Widget getSuccess(ProductAllCategory data,
     {required void Function(String id) click}) {
   return GridView.builder(
     scrollDirection: Axis.vertical,
@@ -89,9 +89,9 @@ Widget getSuccess(GetProductAllCategoryData data,
       childAspectRatio: 3/7, // spacing between columns
     ),
     padding: const EdgeInsets.all(12),
-    itemCount: data.products?.length,
+    itemCount: data.data?.products?.length,
     itemBuilder: (context, index) {
-      var item = data.products?[index];
+      var item = data.data?.products?[index];
       return ItemCategory(
         items: item!,
         click: (id) {

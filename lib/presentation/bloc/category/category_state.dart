@@ -2,7 +2,7 @@ part of 'category_bloc.dart';
 
 class CategoryState  extends Equatable {
   final Status status;
-  final GetProductAllCategoryData? data;
+  final ProductAllCategory? data;
   final String? errorMessage;
   final ChildData? childs;
   final ChildStatus? childStatus;
@@ -11,7 +11,7 @@ class CategoryState  extends Equatable {
 
   CategoryState copyWith({
     Status? status,
-    GetProductAllCategoryData? data,
+    ProductAllCategory? data,
     String? errorMessage,
     ChildData? childs,
     ChildStatus? childStatus,

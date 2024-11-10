@@ -10,7 +10,6 @@ class DetailResponse with _$DetailResponse {
       bool? success,
       String? message,
       int? code,
-      @JsonKey(name: "data")
       GetDataDetail? data,
       ) = _DetailResponse;
 
@@ -30,7 +29,7 @@ class GetDataDetail with _$GetDataDetail {
 
 @freezed
 class GetDetail with _$GetDetail {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory GetDetail(
       int? id,
       String? name,
@@ -66,7 +65,7 @@ class GetDetail with _$GetDetail {
 
 @freezed
 class Catalog with _$Catalog {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Catalog(
       String? name,
       int? minPrice,
@@ -79,7 +78,7 @@ class Catalog with _$Catalog {
 
 @freezed
 class SaleMonths with _$SaleMonths {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory SaleMonths(
       int? id,
       String? name,
@@ -92,7 +91,7 @@ class SaleMonths with _$SaleMonths {
 }
 @freezed
 class MinimalLoanPrice with _$MinimalLoanPrice {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
 
   const factory MinimalLoanPrice(
       String? minMonthlyPrice,
@@ -107,7 +106,7 @@ class MinimalLoanPrice with _$MinimalLoanPrice {
 
 @freezed
 class Seo with _$Seo {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Seo(
       String? title,
       String? description,
@@ -121,7 +120,7 @@ class Seo with _$Seo {
 
 @freezed
 class Stickers with _$Stickers {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Stickers(
       String? name,
       String? backgroundColor,
@@ -137,7 +136,7 @@ class Stickers with _$Stickers {
 
 @freezed
 class MainCharacters with _$MainCharacters {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory MainCharacters(
       String? name,
       String? value,
@@ -149,7 +148,7 @@ class MainCharacters with _$MainCharacters {
 
 @freezed
 class Breadcrumbs with _$Breadcrumbs {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Breadcrumbs(
       String? name,
       String? slug,
@@ -163,7 +162,7 @@ class Breadcrumbs with _$Breadcrumbs {
 
 @freezed
 class Characters with _$Characters {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Characters(
       String? name,
       List<Characters>? characters,
@@ -175,7 +174,7 @@ class Characters with _$Characters {
 
 @freezed
 class AvailableStores with _$AvailableStores {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory AvailableStores(
       int? id,
       String? name,
@@ -193,7 +192,7 @@ class AvailableStores with _$AvailableStores {
 
 @freezed
 class Accessories with _$Accessories {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Accessories(
       String? name,
       List<Products>? products,
@@ -205,7 +204,7 @@ class Accessories with _$Accessories {
 
 @freezed
 class Products with _$Products {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Products(
       int? id,
       String? name,
@@ -237,7 +236,7 @@ class Products with _$Products {
 
 @freezed
 class Brand with _$Brand {
-  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  @JsonSerializable( fieldRename: FieldRename.snake)
   const factory Brand(
       int? id,
       String? slug,

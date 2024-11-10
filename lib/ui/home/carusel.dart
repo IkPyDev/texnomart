@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../data/source/remote/response/sliders_response/sliders_response.dart';
 
@@ -29,8 +30,17 @@ class _SlidersState extends State<Sliders> {
                   borderRadius: BorderRadius.circular(25),
                   child: CachedNetworkImage(
                     imageUrl: i.imageMobileWeb ?? "",
-                    placeholder: (_, __) =>
-                        const Center(child: CircularProgressIndicator()),
+                    alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: MediaQuery.of(context).size.width,
+                    placeholder: (_, __) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                    ),
                     errorWidget: (_, __, ___) => const Icon(Icons.error),
                   ),
                 );
@@ -47,8 +57,7 @@ class _SlidersState extends State<Sliders> {
                     });
                   }),
             ),
-            buildCorouselIndicator(
-                widget.currentPage, widget.slidersResponse.length)
+            buildCorouselIndicator(widget.currentPage, widget.slidersResponse.length)
           ],
         ),
       ),
@@ -65,9 +74,7 @@ buildCorouselIndicator(int currentPage, int length) {
           height: i == currentPage ? 14 : 10,
           width: i == currentPage ? 14 : 10,
           margin: const EdgeInsets.all(5),
-          decoration: BoxDecoration(
-              color: i == currentPage ? Colors.orange : Colors.grey,
-              shape: BoxShape.circle),
+          decoration: BoxDecoration(color: i == currentPage ? Colors.orange : Colors.grey, shape: BoxShape.circle),
         )
     ],
   );

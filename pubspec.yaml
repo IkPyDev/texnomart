@@ -41,7 +41,7 @@ dependencies:
   get_it: ^7.7.0
   talker_dio_logger: ^4.3.2
   retrofit: '>=4.0.0 <5.0.0'
-  shimmer:
+  shimmer: ^3.0.0
   flutter_bloc: ^8.0.2
   carousel_slider: ^4.2.1
   cached_network_image: ^3.3.1
