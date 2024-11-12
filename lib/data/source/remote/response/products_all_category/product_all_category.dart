@@ -36,7 +36,7 @@ class Products with _$Products {
      int? id,
      String? name,
      String? image,
-     String? availability,
+     dynamic availability,
      int? discount,
      String? code,
      int? salePrice,

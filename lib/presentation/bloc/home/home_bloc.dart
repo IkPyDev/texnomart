@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/data/source/remote/response/category_response/category_response.dart';
+import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/data/source/remote/response/sliders_response/sliders_response.dart';
 import 'package:texnomart/data/source/remote/response/special_product_response/special_product_response.dart';
 import 'package:texnomart/domain/repository.dart';
@@ -24,18 +25,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   _loadAllFromApi(LoadDataHomeEvent event, Emitter<HomeState> emit) async {
     emit(HomeState(status: HomeStatus.loading));
     try {
-      final value = await Future.wait([_repository.getSliders(),_repository.getCategory(),_repository.getProductsNews()]);
+      final value =
+          await Future.wait([_repository.getSliders(), _repository.getCategory(), _repository.getProductsNews()]);
       final sliders = value[0] as SlidersResponse;
       final category = value[1] as CategoryResponse;
-      final productTop = value[2] as SpecialProductResponse ;
-      emit(HomeState(status: HomeStatus.successful,
-          categoryResponse: category.data?.data,slidersResponse: sliders.data?.datum,specialProductResponse: productTop.data?.data));
-
-    }catch (e){
-      emit(HomeState(status: HomeStatus.fail,errorMessage: e.toString()));
+      final productTop = value[2] as SpecialProductResponse;
+      emit(HomeState(
+          status: HomeStatus.successful,
+          categoryResponse: category.data?.data,
+          slidersResponse: sliders.data?.datum,
+          specialProductResponse: productTop.data?.data));
+    } catch (e) {
+      emit(HomeState(status: HomeStatus.fail, errorMessage: e.toString()));
     }
-
-
-
   }
 }

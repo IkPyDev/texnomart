@@ -28,14 +28,14 @@ abstract class ApiService {
   @GET("web/v1/home/special-products?type=new_products")
   Future<SpecialProductResponse> getProductNews();
 
-  @GET("common/v1/search/filters")
+  @GET("mobile/v1/search/filters")
   Future<ProductAllCategory> getCategoryProductSimple({
     @Query("category_all") required String category,
     @Query("sort") String? sort,
     @Query("page") String? number,
   });
 
-  @GET("web/v1/product/detail")
+  @GET("mobile/v1/product/detail")
   Future<DetailResponse> getDetail({
     @Query("id") required String id,
   });

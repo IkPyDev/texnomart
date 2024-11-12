@@ -10,10 +10,13 @@ import 'package:texnomart/domain/repository.dart';
 final di = GetIt.instance;
 
 final dio = Dio(BaseOptions(
-  baseUrl: "https://gateway.texnomart.uz/api/"
+  baseUrl: "https://gateway.texnomart.uz:443/api/"
 ));
 
 void setup (){
+  dio.interceptors.add(
+    DioInterceptor(),
+  );
   dio.interceptors.add(
     TalkerDioLogger(
       settings: const TalkerDioLoggerSettings(
@@ -28,4 +31,27 @@ void setup (){
   );
   di.registerSingleton<ApiService>(ApiService(dio));
   di.registerSingleton<TexnoRepository>(RepositoryImpl());
+}
+
+class DioInterceptor extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    // accept language uz
+
+    options.headers.addAll({
+      "accept-language": "uz",
+
+    });
+    return super.onRequest(options, handler);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    return super.onResponse(response, handler);
+  }
+
+  @override
+  void onError(DioError err, ErrorInterceptorHandler handler) {
+    return super.onError(err, handler);
+  }
 }

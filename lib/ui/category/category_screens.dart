@@ -86,7 +86,7 @@ Widget getSuccess(ProductAllCategory data,
       crossAxisCount: 2, // number of items in each row
       mainAxisSpacing: 8.0, // spacing between rows
       crossAxisSpacing: 12.0,
-      childAspectRatio: 3/7, // spacing between columns
+      childAspectRatio: 7/10, // spacing between columns
     ),
     padding: const EdgeInsets.all(12),
     itemCount: data.data?.products?.length,
