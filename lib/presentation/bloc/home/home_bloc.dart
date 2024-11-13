@@ -1,14 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/common/di/di.dart';
 import 'package:texnomart/data/source/remote/response/category_response/category_response.dart';
-import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/data/source/remote/response/sliders_response/sliders_response.dart';
 import 'package:texnomart/data/source/remote/response/special_product_response/special_product_response.dart';
 import 'package:texnomart/domain/repository.dart';
 
-import '../../../di/di.dart';
-
 part 'home_event.dart';
-
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {

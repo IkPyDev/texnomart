@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:texnomart/common/di/di.dart';
 import 'package:texnomart/data/model/model.dart';
 import 'package:texnomart/data/source/remote/response/category_menu/catalog_menu.dart';
 import 'package:texnomart/data/source/remote/response/category_response/category_response.dart';
@@ -8,9 +9,8 @@ import 'package:texnomart/data/source/remote/response/sliders_response/sliders_r
 import 'package:texnomart/data/source/remote/response/special_product_response/special_product_response.dart';
 import 'package:texnomart/data/source/remote/service/api_service.dart';
 
-import '../../di/di.dart';
-import '../../domain/repository.dart';
-import '../source/remote/response/childs_response/childs_respose.dart';
+import 'package:texnomart/domain/repository.dart';
+import 'package:texnomart/data/source/remote/response/childs_response/childs_respose.dart';
 
 
 class RepositoryImpl extends TexnoRepository {

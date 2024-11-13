@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/model/model.dart';
-import '../../../di/di.dart';
-import '../../../domain/repository.dart';
-import '../../../utils/status.dart';
+import 'package:texnomart/data/model/model.dart';
+import 'package:texnomart/domain/repository.dart';
+import 'package:texnomart/utils/status.dart';
+import 'package:texnomart/common/di/di.dart';
+
 
 part 'markets_event.dart';
 

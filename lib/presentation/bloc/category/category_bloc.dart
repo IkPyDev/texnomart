@@ -4,7 +4,8 @@ import 'package:texnomart/domain/repository.dart';
 
 import '../../../data/source/remote/response/childs_response/childs_respose.dart';
 import '../../../data/source/remote/response/products_all_category/product_all_category.dart';
-import '../../../di/di.dart';
+import 'package:texnomart/common/di/di.dart';
+
 import '../../../utils/status.dart';
 
 part 'category_event.dart';

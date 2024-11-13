@@ -121,7 +121,7 @@ Route ganerate(RouteSettings set) {
       return MaterialPageRoute(
           builder: (c) => BlocProvider(
                 create: (context) => ProfilBloc()..add(GetLoadProfilEvent()),
-                child: LikeScreens(),
+                child: const LikeScreens(),
               ));
     default:
       return MaterialPageRoute(builder: (c) => const Placeholder());

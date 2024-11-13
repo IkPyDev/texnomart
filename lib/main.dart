@@ -4,7 +4,7 @@ import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import 'package:hive_flutter/adapters.dart';
 import 'package:texnomart/data/source/local/hive/item_hive_manager.dart';
-import 'package:texnomart/di/di.dart';
+import 'package:texnomart/common/di/di.dart';
 
 import 'app/my_app.dart';
 import 'data/source/local/hive/item_hive.dart';

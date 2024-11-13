@@ -17,6 +17,4 @@ class ItemHive extends HiveObject {
   String img ;
 
   ItemHive({required this.id ,required this.name,  required this.price,required this.img});
-
-
 }
