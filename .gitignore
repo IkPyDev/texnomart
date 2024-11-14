@@ -49,3 +49,14 @@ app.*.map.json
 *.gr.dart
 *.config.dart
 *.gen.dart
+
+# Temporary files created by some IDEs
+*.tmp
+*.temp
+*.bak
+*.swo
+
+# Lock files
+*.lock
+*.bin
+.lockfile
