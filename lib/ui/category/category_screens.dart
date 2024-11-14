@@ -1,30 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/app/my_app.dart';
 import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/presentation/bloc/category/category_bloc.dart';
 import 'package:texnomart/presentation/bloc/detail/detail_bloc.dart';
 import 'package:texnomart/ui/category/category_data.dart';
+import 'package:texnomart/ui/category/widgets/category_data.dart';
 import 'package:texnomart/ui/detail/detail_screens.dart';
 import 'package:texnomart/utils/status.dart';
 import 'package:texnomart/utils/widget.dart';
 
 import 'item_category.dart';
 
-class CategoryScreen extends StatefulWidget {
-  final CategoryItemData data;
+class CategoryScreen extends StatelessWidget {
 
-  const CategoryScreen({required this.data, super.key});
-
-  @override
-  State<CategoryScreen> createState() => _CategoryScreenState();
-}
-
-class _CategoryScreenState extends State<CategoryScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // context.read<CategoryBloc>().add(GetSlugCategoryEvent(slug: args.slug));
-  }
+  const CategoryScreen({ super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +28,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           child: const Icon(Icons.arrow_back, size: 25, color: Colors.black),
         ),
         title: Text(
-          widget.data.title,
+          context.select((CategoryBloc bloc) => bloc.state.categoryItemData?.title ?? ""),
           style: const TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
@@ -55,17 +45,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
               return getFail(state.errorMessage.toString());
             case Status.success:
               {
-                return getSuccess(state.data!, click: (String id) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BlocProvider(
-                                create: (c) =>
-                                    DetailBloc()..add(DetailIdEvent(id: id)),
-                                child: DetailScreens(
-                                  args: id,
-                                ),
-                              )));
+                return CategorySuccessWidget( click: (String id) {
+                  Navigator.pushNamed(context,AppRoutes.detail.name, arguments: id);
                 });
               }
 
@@ -78,29 +59,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 }
 
-Widget getSuccess(ProductAllCategory data,
-    {required void Function(String id) click}) {
-  return GridView.builder(
-    scrollDirection: Axis.vertical,
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2, // number of items in each row
-      mainAxisSpacing: 8.0, // spacing between rows
-      crossAxisSpacing: 12.0,
-      childAspectRatio: 7/10, // spacing between columns
-    ),
-    padding: const EdgeInsets.all(12),
-    itemCount: data.data?.products?.length,
-    itemBuilder: (context, index) {
-      var item = data.data?.products?[index];
-      return ItemCategory(
-        items: item!,
-        click: (id) {
-          click(id);
-        },
-      );
-    },
-  );
-}
 
 Widget getFail(String errorMessage) {
   return Center(child: Text(errorMessage));

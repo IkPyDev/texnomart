@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:texnomart/presentation/bloc/category/category_bloc.dart';
-import 'package:texnomart/ui/category/category_Screens.dart';
 import 'package:texnomart/ui/category/category_data.dart';
+import 'package:texnomart/ui/category/category_screens.dart';
 
 import '../../data/source/remote/response/category_menu/catalog_menu.dart';
 
@@ -72,9 +72,8 @@ class CategoryMenuItem extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => BlocProvider(
-                          create: (c) => CategoryBloc()..add(GetSlugCategoryEvent(slug: category.slug)),
+                          create: (c) => CategoryBloc()..add(GetSlugCategoryEvent(slug: category)),
                           child: CategoryScreen(
-                            data: category,
                           ),
                         ),
                       ),

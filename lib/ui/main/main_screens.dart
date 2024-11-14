@@ -3,6 +3,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/app/my_app.dart';
 import 'package:texnomart/ui/profil/profil_likes/like_screens.dart';
 
 import '../../presentation/bloc/basket/basket_bloc.dart';
@@ -116,6 +117,8 @@ class _MainScreensState extends State<MainScreens> {
             switch (index) {
               case 0:
                 return CupertinoTabView(
+                  onGenerateRoute: generateRoute,
+
                   builder: (context) {
                     return BlocProvider(
                       create: (context) => HomeBloc()..add(LoadDataHomeEvent()),
@@ -125,6 +128,8 @@ class _MainScreensState extends State<MainScreens> {
                 );
               case 1:
                 return CupertinoTabView(
+                  onGenerateRoute: generateRoute,
+
                   builder: (context) {
                     return BlocProvider(
                       create: (context) =>
@@ -135,6 +140,8 @@ class _MainScreensState extends State<MainScreens> {
                 );
               case 2:
                 return CupertinoTabView(
+                  onGenerateRoute: generateRoute,
+
                   builder: (context) {
                     return BlocProvider(
                       create: (context) => BasketBloc()..add(LoadBasketData()),
@@ -144,6 +151,8 @@ class _MainScreensState extends State<MainScreens> {
                 );
               case 3:
                 return CupertinoTabView(
+                  onGenerateRoute: generateRoute,
+
                   builder: (context) {
                     return BlocProvider(
                       create: (context) =>
@@ -154,12 +163,16 @@ class _MainScreensState extends State<MainScreens> {
                 );
               case 4:
                 return CupertinoTabView(
+                  onGenerateRoute: generateRoute,
+
                   builder: (context) {
                     return Profil();
                   },
                 );
               default:
                 return CupertinoTabView(
+                  onGenerateRoute: generateRoute,
+
                   builder: (context) {
                     return const Placeholder();
                   },

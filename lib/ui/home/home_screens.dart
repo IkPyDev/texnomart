@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/app/my_app.dart';
 import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/presentation/bloc/detail/detail_bloc.dart';
 import 'package:texnomart/presentation/bloc/home/home_bloc.dart';
@@ -218,14 +219,10 @@ class _HomeScreensState extends State<HomeScreens> {
                 return HomeContent(
                   state: state,
                   onCategoryClick: (data) {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                          create: (c) => CategoryBloc()..add(GetSlugCategoryEvent(slug: data.slug)),
-                          child: CategoryScreen(data: data),
-                        ),
-                      ),
+                      AppRoutes.category.name,
+                      arguments: data,
                     );
                   },
                   onProductClick: (id) {

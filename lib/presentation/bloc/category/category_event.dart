@@ -4,7 +4,7 @@ abstract class CategoryEvent {}
 
 
 final class GetSlugCategoryEvent extends CategoryEvent{
-  final String slug;
+  final CategoryItemData slug;
 
   GetSlugCategoryEvent({required this.slug});
 
