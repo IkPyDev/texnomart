@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:texnomart/common/utils/print.dart';
 import 'package:texnomart/data/source/local/hive/basket_hive.dart';
 import 'package:texnomart/data/source/local/hive/item_hive_manager.dart';
 
@@ -19,11 +20,12 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     ChangeBottomNavigation event,
     Emitter<MainState> emit,
   ) {
+    pPrint("change bottom navigation ${event.chosenIndex}");
    emit( state.copyWith(bottomNavigationIndex: event.chosenIndex));
   }
   _loadAllBasketData(LoadAllBasketData event, Emitter<MainState> emit) {
     final ls = ItemHiveManager.basket.values.toList();
-    print("basket all size ${ls.length}" );
+    pPrint("basket all size ${ls.length}" );
     emit(state.copyWith(notificationCount: ls.length,));
   }
 }
