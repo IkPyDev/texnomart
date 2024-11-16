@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/app/my_app.dart';
+import 'package:texnomart/common/utils/print.dart';
 import 'package:texnomart/ui/profil/profil_likes/like_screens.dart';
 
 import '../../presentation/bloc/basket/basket_bloc.dart';
@@ -27,8 +28,11 @@ class _MainScreensState extends State<MainScreens> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MainBloc, MainState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+      },
       builder: (context, state) {
+        pPrint("Current Index: ${state.bottomNavigationIndex}"); // Tekshirish uchun print
+
         return CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             currentIndex: state.bottomNavigationIndex,
@@ -113,8 +117,10 @@ class _MainScreensState extends State<MainScreens> {
               ),
             ],
           ),
-          tabBuilder: (context, index) {
-            switch (index) {
+          tabBuilder: (__, _) {
+            pPrint("Tab builder index: $_, ${state.bottomNavigationIndex}"); // Tekshirish uchun print qo'shing
+
+            switch (state.bottomNavigationIndex) {
               case 0:
                 return CupertinoTabView(
                   onGenerateRoute: generateRoute,
