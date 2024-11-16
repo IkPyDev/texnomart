@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texnomart/app/my_app.dart';
+import 'package:texnomart/common/gen/assets.gen.dart';
 import 'package:texnomart/data/source/remote/response/products_all_category/product_all_category.dart';
 import 'package:texnomart/presentation/bloc/detail/detail_bloc.dart';
 import 'package:texnomart/presentation/bloc/home/home_bloc.dart';
@@ -98,6 +99,7 @@ class SectionTitle extends StatelessWidget {
           "hammasi",
           style: TextStyle(fontSize: 14, color: Colors.black),
         ),
+        Assets.icon.location.svg(),
         const Icon(
           Icons.arrow_forward_ios,
           color: Colors.grey,
