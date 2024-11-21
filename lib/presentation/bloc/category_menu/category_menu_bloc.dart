@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:texnomart/domain/repository.dart';
 
 import '../../../data/source/remote/response/category_menu/catalog_menu.dart';
@@ -16,18 +15,18 @@ class CategoryMenuBloc extends Bloc<CategoryMenuEvent, CategoryMenuState> {
     final repository = di<TexnoRepository>();
     on<GetCategoryMenuEvent>((event, emit) async {
       // print("loading");
-      emit(CategoryMenuState(status: Status.loading));
+      emit(state.copyWith(status: Status.loading));
       try{
         // print("get request loading");
 
         final res = await repository.getCatalogMenu();
 
-        emit(CategoryMenuState(status: Status.success,data: res.data?.data ?? []));
+        emit(state.copyWith(status: Status.success,data: res.data?.data ?? []));
 
         // print("suc request loading");
 
       }catch (e){
-        emit(CategoryMenuState(status: Status.fail,errorMessage: e.toString()));
+        emit(state.copyWith(status: Status.fail,errorMessage: e.toString()));
         // print("error handl");
 
       }

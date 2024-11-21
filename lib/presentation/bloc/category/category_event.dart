@@ -14,3 +14,16 @@ final class SelectSlugCategoryEvent extends CategoryEvent{
   final String childSlug;
   SelectSlugCategoryEvent( {required this.childSlug});
 }
+
+final class PaginationEvent extends CategoryEvent{
+  PaginationEvent();
+}
+final class ScrollChangeEvent extends CategoryEvent {
+  final bool isScrollingUp;
+
+  ScrollChangeEvent({required this.isScrollingUp});
+}
+
+final class HideLottieEvent extends CategoryEvent {
+  HideLottieEvent();
+}
