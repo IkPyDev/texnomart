@@ -17,23 +17,17 @@ import '../home/home_screens.dart';
 import '../profil/profil.dart';
 import '../saves/saves.dart';
 
-class MainScreens extends StatefulWidget {
+class MainScreens extends StatelessWidget {
   const MainScreens({super.key});
 
   @override
-  State<MainScreens> createState() => _MainScreensState();
-}
-
-class _MainScreensState extends State<MainScreens> {
-  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MainBloc, MainState>(
-      listener: (context, state) {
-      },
+    return BlocBuilder<MainBloc, MainState>(
       builder: (context, state) {
-        pPrint("Current Index: ${state.bottomNavigationIndex}"); // Tekshirish uchun print
+        pPrint("main ui Current Index: ${state.bottomNavigationIndex}",level: 2); // Tekshirish uchun print
 
         return CupertinoTabScaffold(
+          controller: CupertinoTabController(initialIndex: state.bottomNavigationIndex),
           tabBar: CupertinoTabBar(
             currentIndex: state.bottomNavigationIndex,
             onTap: (index) {
@@ -117,24 +111,16 @@ class _MainScreensState extends State<MainScreens> {
               ),
             ],
           ),
-          tabBuilder: (__, _) {
-            pPrint("Tab builder index: $_, ${state.bottomNavigationIndex}"); // Tekshirish uchun print qo'shing
+          tabBuilder: (BuildContext context,index ) {
 
+            pPrint("Current Index: $index",level: 3); // Tekshirish uchun print
             switch (state.bottomNavigationIndex) {
-              case 0:
-                return CupertinoTabView(
-                  onGenerateRoute: generateRoute,
 
-                  builder: (context) {
-                    return BlocProvider(
-                      create: (context) => HomeBloc()..add(LoadDataHomeEvent()),
-                      child: const HomeScreens(),
-                    );
-                  },
-                );
+
               case 1:
                 return CupertinoTabView(
                   onGenerateRoute: generateRoute,
+
 
                   builder: (context) {
                     return BlocProvider(
@@ -151,7 +137,7 @@ class _MainScreensState extends State<MainScreens> {
                   builder: (context) {
                     return BlocProvider(
                       create: (context) => BasketBloc()..add(LoadBasketData()),
-                      child: Saves(),
+                      child: const Saves(),
                     );
                   },
                 );
@@ -163,7 +149,7 @@ class _MainScreensState extends State<MainScreens> {
                     return BlocProvider(
                       create: (context) =>
                           ProfilBloc()..add(GetLoadProfilEvent()),
-                      child: LikeScreens(),
+                      child: const LikeScreens(),
                     );
                   },
                 );
@@ -172,7 +158,7 @@ class _MainScreensState extends State<MainScreens> {
                   onGenerateRoute: generateRoute,
 
                   builder: (context) {
-                    return Profil();
+                    return const Profil();
                   },
                 );
               default:
@@ -180,7 +166,10 @@ class _MainScreensState extends State<MainScreens> {
                   onGenerateRoute: generateRoute,
 
                   builder: (context) {
-                    return const Placeholder();
+                    return BlocProvider(
+                      create: (context) => HomeBloc()..add(LoadDataHomeEvent()),
+                      child: const HomeScreens(),
+                    );
                   },
                 );
             }

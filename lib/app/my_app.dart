@@ -56,16 +56,8 @@ class MyApp extends StatelessWidget {
 }
 
 Route generateRoute(RouteSettings settings) {
-  pPrint(settings.name,level: 4);
   switch (settings.name) {
-    case "/main":
-      return customPageRoute(
-        BlocProvider(
-          create: (context) => MainBloc()..add(LoadAllBasketData()),
-          child: const MainScreens(),
-        ),
-        routeName: AppRoutes.main.name,
-      );
+
     case "/home":
       return customPageRoute(
         BlocProvider(
@@ -120,8 +112,11 @@ Route generateRoute(RouteSettings settings) {
       );
     default:
       return customPageRoute(
-        const Placeholder(),
-        routeName: AppRoutes.unknown.name,
+        BlocProvider(
+          create: (context) => MainBloc()..add(LoadAllBasketData()),
+          child: const MainScreens(),
+        ),
+        routeName: AppRoutes.main.name,
       );
   }
 }

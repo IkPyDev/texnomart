@@ -1,19 +1,19 @@
 part of 'main_bloc.dart';
 
-class MainState {
+class MainState  extends Equatable{
   final int bottomNavigationIndex;
   final int notificationCount;
   final Status status;
 
   factory MainState.initial() {
-    return MainState(
+    return const MainState(
       bottomNavigationIndex: 0,
       notificationCount: 0,
       status: Status.success,
     );
   }
 
-  MainState({
+  const MainState({
     required this.bottomNavigationIndex,
     required this.notificationCount,
     required this.status,
@@ -34,4 +34,8 @@ class MainState {
   @override
   String toString() =>
       'MainState(bottomNavigationIndex: $bottomNavigationIndex)';
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [bottomNavigationIndex, notificationCount, status];
 }

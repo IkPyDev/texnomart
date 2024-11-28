@@ -43,7 +43,7 @@ dependencies:
   retrofit: '>=4.0.0 <5.0.0'
   shimmer: ^3.0.0
   flutter_bloc: ^8.0.2
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.10+1
   flutter_pannable_rating_bar: ^2.7.2+1

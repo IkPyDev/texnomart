@@ -69,7 +69,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
                   products: [...?state.products, ...?response.data?.products],
                   childStatus: ChildStatus.success,
                   currentPage: response.data?.pagination?.currentPage,
-                  isLottieVisible: isLastPage,
+                  // isLottieVisible: isLastPage,
                 ),
               );
 

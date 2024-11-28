@@ -93,7 +93,7 @@ class SectionTitle extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: (){
-          context.read<MainBloc>().add(ChangeBottomNavigation(chosenIndex: 2));
+          context.read<MainBloc>().add(ChangeBottomNavigation(chosenIndex: 1));
         },
         child: Row(
           children: [
@@ -106,7 +106,7 @@ class SectionTitle extends StatelessWidget {
               "hammasi",
               style: TextStyle(fontSize: 14, color: Colors.black),
             ),
-            Assets.icon.location.svg(),
+            // Assets.icon.location.svg(),
         const Icon(
           Icons.arrow_forward_ios,
           color: Colors.grey,

@@ -37,7 +37,7 @@ class GetDetail with _$GetDetail {
       Catalog? catalog,
       List<String>? smallImages,
       List<String>? largeImages,
-      String? availability,
+      dynamic availability,
       String? model,
       String? brand,
       int? salePrice,
