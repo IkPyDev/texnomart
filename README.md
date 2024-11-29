@@ -1,6 +1,6 @@
 # Texnomart
 
-## Foydalanilgan texnalogiyalar: *Bloc*,*Dio*,*Retrfit*,*Freezed*,*Get_it*,*Hive*,*Lottie*,*Yandex_map*
+## Foydalanilgan texnalogiyalar: *Bloc*,*Dio*,*Retrfit*,*Freezed*,*Get_it*,*Hive*,*Lottie*,*Yandex_map*,*Pagination *
 
 
 
